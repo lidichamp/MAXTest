@@ -1,8 +1,12 @@
 var _ = require('underscore');
-// var input = require('./input');
 
+/**
+ * This is the entry point to the program
+ *
+ * @param {array} input Array of student objects
+ */
 
-function students(input){
+function classifier(input){
     let sorted = sortByAge(toAge(input));
     let result = groupAging(sorted);
     return formatOutput(result);
@@ -66,17 +70,22 @@ function toAge(data){
     });
     return result;
 }
-
 function sortByAge(data){
     return _.sortBy(data, 'dob');
 }
 
 function calculate_age(dob) { 
-    var diff_ms = Date.now() - dob.getTime();
+    var today = new Date();
+    var diff_ms = today- dob;
     var age_dt = new Date(diff_ms); 
-  
-    return Math.abs(age_dt.getUTCFullYear() - 1970);
+    var thisYear=0;
+    if(today.getMonth()<dob.getMonth()){
+        thisyear=1;
+    }
+    else if(today.getMonth()== dob.getMonth() && today.getDate()<dob.getDate()){
+        thisYear=1;
+    }
+    return Math.abs(age_dt.getUTCFullYear() - thisYear - 1970);
 }
 
-// console.log(init());
-module.exports=students;
+module.exports=classifier;
