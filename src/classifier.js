@@ -40,6 +40,9 @@ function groupAging(input){
                     last_group.oldest = one.dob;
                     last_group.sum += one.dob;
                     last_group.regNos.push(parseInt(one.regNo));
+                    last_group.regNos=_.sortBy(last_group.regNos, function(num){
+                        return num;
+                    });
                     groups[_.size(groups)-1] = last_group;
                     is_new_group = false;
                 }

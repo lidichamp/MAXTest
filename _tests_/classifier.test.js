@@ -94,14 +94,14 @@ const output =
     {
       "members": [{"age": 126, "name": "Louis"}, {"age": 126, "name": "Arthur"}, {"age": 128, "name": "William"}], 
       "oldest": 128, 
-      "regNos": [22, 321, 13], 
+      "regNos": [13, 22, 321], 
       "sum": 380
     }, 
   "group3": 
     {
       "members": [{"age": 131, "name": "Erwin"}, {"age": 133, "name": "Neils"}, {"age": 135, "name": "Auguste"}], 
       "oldest":135, 
-      "regNos": [9, 2, 8], 
+      "regNos": [2, 8 ,9], 
       "sum": 399
     }, 
   "group4": 
@@ -115,7 +115,7 @@ const output =
     {
       "members": [{"age": 147, "name": "Martin"}, {"age": 150, "name": "Charles"},{"age": 151, "name": "Marie"}], 
       "oldest": 151, 
-      "regNos": [63, 91, 24],
+      "regNos": [24, 63, 91],
       "sum": 448
     }, 
   "group6": 
