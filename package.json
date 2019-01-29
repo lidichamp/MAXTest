@@ -2,7 +2,7 @@
   "name": "lydia",
   "version": "1.0.0",
   "description": "max test",
-  "main": "classifier.js",
+  "main": "src/classifier.js",
   "scripts": {
     "test": "jest"
   },
