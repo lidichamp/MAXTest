@@ -1,7 +1,4 @@
 const decodeMorse = require('../src/morse');
-test('decodes morse', () => {
-    expect(decodeMorse('-- .- -..-   -. --- .--')).toEqual("MAX NOW");
-  });
 
 describe('decodeMorse assumptions', () => {
     test('it returns an empty string untouched', () => {
@@ -14,7 +11,7 @@ describe('decodeMorse assumptions', () => {
     });
   });
   
-  describe('decodeMorse spec', () => {
+describe('decodeMorse spec', () => {
     test('it decodes single letters and words', () => {
       expect(decodeMorse('.-')).toBe('A');
       expect(decodeMorse('.')).toBe('E');

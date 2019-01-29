@@ -64,7 +64,7 @@ const MORSE_CODE = {
    * @param {string} morseCode The string to decode.
    */
     function decodeMorse(morseCode){
-        return morseCode.trim().split('   ')
+     return morseCode.trim().split('   ')
         .map(function(morseWord) {
           return morseWord.split(' ')
           .map(function(morseLetter) {
@@ -72,4 +72,5 @@ const MORSE_CODE = {
           }).join('');
         }).join(' ');
        }
+      
 module.exports = decodeMorse;

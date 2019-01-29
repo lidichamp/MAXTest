@@ -1,13 +1,9 @@
 var _ = require('underscore');
 
-/**
- * This is the entry point to the program
- *
- * @param {array} input Array of student objects
- */
 
 function classifier(input){
-    let sorted = sortByAge(toAge(input));
+    let age_input=toAge(input);
+    let sorted = sortByAge(age_input);
     let result = groupAging(sorted);
     return formatOutput(result);
 }
@@ -42,7 +38,7 @@ function groupAging(input){
                     last_group.regNos.push(parseInt(one.regNo));
                     last_group.regNos=_.sortBy(last_group.regNos, function(num){
                         return num;
-                    });
+});
                     groups[_.size(groups)-1] = last_group;
                     is_new_group = false;
                 }
@@ -68,27 +64,39 @@ function memberObject(one){
 function toAge(data){
     let result = [];
     _.each(data, function(one){
-        one.dob = calculate_age(new Date(one.dob));
+        one.dob = calculate_age(one.dob);
         result.push(one);
     });
     return result;
 }
+
 function sortByAge(data){
     return _.sortBy(data, 'dob');
 }
 
-function calculate_age(dob) { 
-    var today = new Date();
-    var diff_ms = today- dob;
-    var age_dt = new Date(diff_ms); 
-    var thisYear=0;
-    if(today.getMonth()<dob.getMonth()){
-        thisyear=1;
-    }
-    else if(today.getMonth()== dob.getMonth() && today.getDate()<dob.getDate()){
-        thisYear=1;
-    }
-    return Math.abs(age_dt.getUTCFullYear() - thisYear - 1970);
+function calculate_age(db) {
+    // var today = new Date();
+    // var dob=new Date(dob);
+    // var age = today.getFullYear() - dob.getFullYear();
+    // var m = today.getMonth() - dob.getMonth();
+    // // if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+    // //     age--;
+    // // }
+    // return age;
+        var dob=new Date(db);
+        var today = new Date();
+        var diff_ms = today- dob;
+        var age_dt = new Date(diff_ms); 
+        var thisYear=0;
+        if(today.getMonth()<dob.getMonth()){
+            thisyear=1;
+        }
+        else if(today.getMonth()== dob.getMonth() && today.getDate()<dob.getDate()){
+            thisYear=1;
+        }
+        return Math.abs(age_dt.getUTCFullYear() - thisYear - 1970);
+    
 }
 
-module.exports=classifier;
+// console.log(init());
+module.exports=classifier; 
