@@ -78,5 +78,3 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
-babel.config.js
-jest.config.js
