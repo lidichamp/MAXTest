@@ -3,12 +3,14 @@ const input = require('../src/inputs/input');
 const output = require('../src/outputs/output');
 const inputEdge = require('../src/inputs/edge-input');
 const outputEdge = require('../src/outputs/out-edge');
+
 describe('classifier assumptions', () => {
   test('it throws error given invalid input', () => {
     expect(() => classifier()).toThrow();
     expect(() => classifier('1')).toThrow();
     expect(() => classifier({})).toThrow();
   });
+
   test('it does not mutate the original array', () => {
     const immutable = require('../src/inputs/input');
     Object.freeze(immutable);
@@ -51,22 +53,14 @@ describe('classifier spec', () => {
     expect(classifier(arr)).toHaveProperty('noOfGroups', 1);
     expect(classifier(arr)).toHaveProperty('group1.members');
   });
-
-  test('partial values - some key names and values', () => {
-    const out = classifier(input);
-
-    expect(out).toMatchObject(output);
-  });
-
   test('it gets everything right', () => {
     const out = classifier(input);
 
     expect(out).toEqual(output);
   });
+  test('passes for a different input', () => {
+    const out = classifier(inputEdge);
 
-  // test('passes for a different input', () => {
-  //   const out = classifier(inputEdge);
-
-  //   expect(out).toEqual(outputEdge);
-  // });
+    expect(out).toEqual(outputEdge);
+  });
 });

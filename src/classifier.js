@@ -2,10 +2,15 @@ var _ = require('underscore');
 
 
 function classifier(input){
+    if(Array.isArray(input)){
     let age_input=toAge(input);
     let sorted = sortByAge(age_input);
     let result = groupAging(sorted);
     return formatOutput(result);
+    }
+    else{
+        throw "wrong input";
+    }
 }
 
 function formatOutput(result){
@@ -69,34 +74,21 @@ function toAge(data){
     });
     return result;
 }
-
 function sortByAge(data){
     return _.sortBy(data, 'dob');
 }
 
-function calculate_age(db) {
-    // var today = new Date();
-    // var dob=new Date(dob);
-    // var age = today.getFullYear() - dob.getFullYear();
-    // var m = today.getMonth() - dob.getMonth();
-    // // if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
-    // //     age--;
-    // // }
-    // return age;
-        var dob=new Date(db);
-        var today = new Date();
-        var diff_ms = today- dob;
-        var age_dt = new Date(diff_ms); 
-        var thisYear=0;
+function calculate_age(dob) {
+    var today=new Date();
+    var dob=new Date(dob);
+    var thisYear=0;
         if(today.getMonth()<dob.getMonth()){
-            thisyear=1;
+            thisYear=1;
         }
         else if(today.getMonth()== dob.getMonth() && today.getDate()<dob.getDate()){
             thisYear=1;
-        }
-        return Math.abs(age_dt.getUTCFullYear() - thisYear - 1970);
-    
+            }
+    var age= Math.floor(today.getFullYear() - thisYear- (dob).getFullYear() );
+    return age;
 }
-
-// console.log(init());
 module.exports=classifier; 

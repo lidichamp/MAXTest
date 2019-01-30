@@ -1,4 +1,4 @@
-const input = [
+const input= [
     {
       name: 'Hendrick',
       dob: '1853-07-18T00:00:00.000Z',
@@ -78,7 +78,7 @@ const input = [
       name: 'Charles',
       dob: '1868-02-14T00:00:00.000Z',
       regNo: '091',
-    },
+    }
   ];
-  
+
   module.exports = input;
